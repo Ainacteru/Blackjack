@@ -34,6 +34,7 @@ class MainProgram
         {
             case "hit":
                 Console.WriteLine("You chose to hit");
+                hit();
                 break;
             case "stay":
                 Console.WriteLine("You chose to stay");
@@ -49,11 +50,11 @@ class MainProgram
     {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
         gameManager.ChooseCard();
-        int card = gameManager.GetCard(gameManager.GetCardsLength());
+        int card = gameManager.GetCard(gameManager.GetCardsLength() - 1);
 
         Console.WriteLine($"Your card is {card}");
 
-
+        askForHitStay();
     }
 
 
