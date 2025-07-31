@@ -1,5 +1,3 @@
-using System;
-
 public class CardsManager
 {
     private List<int> cards = new List<int>();

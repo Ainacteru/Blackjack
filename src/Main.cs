@@ -57,9 +57,7 @@ class MainProgram
 
 
         int card = cards[cards.Count - 1];
-
-        Console.WriteLine("Your hand: " + string.Join(", ", cards));
-        //Console.WriteLine("Final sum: " + gameManager.GetSum(cards));
+        Console.WriteLine($"Drew: {card}");
 
         if (!(gameManager.CheckIfLost(cards) == true))
         {
@@ -73,9 +71,15 @@ class MainProgram
 
     private void stay()
     {
+
+        Console.WriteLine("Your final hand: " + string.Join(", ", cards));
+        Console.WriteLine("Press enter to continue");
+
+        Console.ReadLine();
+        Console.WriteLine();
+
         Dealer dealer = new Dealer(gameManager);
 
-        Console.WriteLine("You chose to stay");
         Console.WriteLine("Waiting for dealer's hand...");
 
         dealer.DealerDecision();
