@@ -38,6 +38,7 @@ public class CardsManager
     {
         var random = new Random();
         int card = random.Next(cards.Count);
+        cards.Remove(card);
 
         return cards[card];
     }

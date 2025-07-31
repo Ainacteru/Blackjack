@@ -53,11 +53,21 @@ class MainProgram
     {
         Console.WriteLine("You chose to hit");
 
-        cards.Add(gameManager.ChooseCard());
+        int newCard = gameManager.ChooseCard();
+        cards.Add(newCard);
 
-
+        gameManager.AceHandler(cards);
+        
         int card = cards[cards.Count - 1];
-        Console.WriteLine($"Drew: {card}");
+
+        if (card == 1 || card == 11)
+        {
+            Console.WriteLine($"Drew: ace");
+        }
+        else
+        {
+            Console.WriteLine($"Drew: {card}");
+        }
 
         if (!(gameManager.CheckIfLost(cards) == true))
         {

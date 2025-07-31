@@ -16,6 +16,7 @@ public class GameManager
     {
         int randomCard = cardsManager.GetRandomCard();
 
+
         return randomCard;
 
     }
@@ -50,5 +51,23 @@ public class GameManager
         }
         //Console.WriteLine(cardsSum); 
         return cardsSum;
+    }
+
+    public void AceHandler(List<int> cards)
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if ((cards[i] == 1) && (GetSum(cards) < 21))
+            {
+                cards[i] = 11;
+                return;
+            }
+
+            if ((cards[i] == 11) && (GetSum(cards) > 21))
+            {
+                cards[i] = 1;
+                return;
+            }
+        }
     }
 }

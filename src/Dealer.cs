@@ -22,7 +22,16 @@ public class Dealer
         {
             int newCard = gameManager.ChooseCard();
             cards.Add(newCard);
-            Console.WriteLine($"Drew: {newCard}");
+            gameManager.AceHandler(cards);
+
+            if (newCard == 1 || newCard == 11)
+            {
+                Console.WriteLine($"Drew: ace");
+            }
+            else
+            {
+                Console.WriteLine($"Drew: {newCard}");
+            }
 
             sum = GetSum();
 
