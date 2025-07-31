@@ -54,7 +54,7 @@ class GameManager
         {
             cardsSum += card;
         }
-        //Console.WriteLine(cardsSum);
+        //Console.WriteLine(cardsSum); //
         return cardsSum;
     }
 }
