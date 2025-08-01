@@ -12,7 +12,15 @@ public class Player
     public void DrawCard()
     {
         Card nextCard = gameManager.DrawCard();
-        
+        gameManager.AceHandler(hand);
+
+        hand.Add(nextCard);
+    }
+
+    public void DrawCard(List<Card> hand)
+    {
+        Card nextCard = gameManager.DrawCard();
+
         hand.Add(nextCard);
     }
 
@@ -24,6 +32,11 @@ public class Player
     public List<Card> GetHand()
     {
         return hand;
+    }
+    
+    public int GetSum()
+    {
+        return gameManager.GetSum(hand);
     }
 
 }
