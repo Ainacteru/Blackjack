@@ -131,6 +131,7 @@ public class DialogManager
     }
 
     private void PlayAgain() {
+        cardsManager.GenerateDeck();
         Console.WriteLine("Type enter to play again or 'exit' to quit");
         
         if (!(Console.ReadLine() == "exit"))
