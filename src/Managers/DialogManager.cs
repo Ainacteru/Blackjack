@@ -19,6 +19,7 @@ public class DialogManager
 
         Console.WriteLine("Welcome to Blackjack, type enter to play!");
         Console.ReadLine();
+        Console.Clear();
 
         player.DrawCard();
         player.DrawCard();
@@ -30,7 +31,8 @@ public class DialogManager
 
     public void HitOrStay()
     {
-        Console.WriteLine("Do you 'hit' or 'stay'?");
+    
+        Console.WriteLine("Do you 'hit', 'stay' or 'list' your cards?");
 
         string? answer = Console.ReadLine();
         switch (answer)
@@ -42,12 +44,14 @@ public class DialogManager
                 break;
 
             case "stay":
+                Console.WriteLine();
+
                 stay();
                 break;
 
             case "list":
+                Console.Clear();
                 Console.WriteLine("Your hand has: " + string.Join(", ", player.GetHand()));
-                Console.WriteLine();
 
                 HitOrStay();
                 break;
@@ -63,6 +67,7 @@ public class DialogManager
 
     private void hit()
     {
+        Console.Clear();
         player.DrawCard();
 
         Console.WriteLine($"You drew '{player.GetCardInHand(player.GetHand().Count - 1)}'");
@@ -80,10 +85,12 @@ public class DialogManager
 
     private void stay()
     {
+        Console.Clear();
         Console.WriteLine("Your final hand: " + string.Join(", ", player.GetHand()));
         Console.WriteLine("Press enter to continue");
 
         Console.ReadLine();
+        Console.Clear();
 
         DealerTurn();
     }
@@ -95,112 +102,27 @@ public class DialogManager
 
         Console.WriteLine("Waiting for dealer's hand...");
 
+        Thread.Sleep(1000);
         dealer.DealerPlay();
+
+        Console.WriteLine("Your final hand: " + string.Join(", ", player.GetHand()));
+        FinalOutcome(dealer, player);
+    }
+
+    private void FinalOutcome(Dealer dealer, Player player)
+    {
+        Console.WriteLine();
+        if ((dealer.GetSum() < 22) && (dealer.GetSum() > player.GetSum()))
+        {
+            Console.WriteLine("Dealer Wins!");
+        }
+        else if (dealer.GetSum() == player.GetSum())
+        {
+            Console.WriteLine("Its a tie!");
+        }
+        else
+        {
+            Console.WriteLine("You Win!");
+        }
     }
 }
-
-// GameManager gameManager = new GameManager();
-
-    // private void main()
-    // {
-    //     CardsManager cardmanager = new CardsManager();
-    //     gameManager = new GameManager(cardmanager);
-
-    //     // int card1 =(gameManager.ChooseCard());
-    //     // int card2 =(gameManager.ChooseCard());
-
-    //     string card1 = "1";
-    //     string card2 = "10";
-
-    //     cards.Add(Int32.Parse(card1));
-    //     cards.Add(Int32.Parse(card2));
-
-    //     if (card1 == "1")
-    //     {
-    //         card1 = "Ace";
-    //     }
-    //     else if(card2 == "1")
-    //     {
-    //         card2 = "Ace";
-    //     }
-
-    //     gameManager.AceHandler(cards);
-
-    //     Console.WriteLine($"You have two cards. They are {card1} and {card2}");
-
-
-    //     askForHitStay();
-    // }
-
-    // private void askForHitStay()
-    // {
-    //     Console.WriteLine("Do you 'hit' or 'stay'?");
-
-    //     string? answer = Console.ReadLine();
-    //     switch (answer)
-    //     {
-    //         case "hit":
-    //             hit();
-    //             break;
-
-    //         case "stay":
-    //             stay();
-    //             break;
-
-    //         case "list":
-    //             Console.WriteLine("Your hand has: " + string.Join(", ", cards));
-    //             askForHitStay();
-    //             break;
-
-    //         default:
-    //             Console.WriteLine("Not a valid answer, try again");
-    //             askForHitStay();
-    //             break;
-    //     }
-    // }
-
-    // private void hit()
-    // {
-    //     Console.WriteLine("You chose to hit");
-
-    //     int newCard = gameManager.ChooseCard();
-    //     cards.Add(newCard);
-
-    //     gameManager.AceHandler(cards);
-
-    //     int card = cards[cards.Count - 1];
-
-    //     if (card == 1 || card == 11)
-    //     {
-    //         Console.WriteLine($"Drew: ace");
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine($"Drew: {card}");
-    //     }
-
-    //     if (!(gameManager.CheckIfLost(cards) == true))
-    //     {
-    //         askForHitStay();
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine("BUST!");
-    //     }
-    // }
-
-    // private void stay()
-    // {
-
-    //     Console.WriteLine("Your final hand: " + string.Join(", ", cards));
-    //     Console.WriteLine("Press enter to continue");
-
-    //     Console.ReadLine();
-    //     Console.WriteLine();
-
-    //     Dealer dealer = new Dealer(gameManager);
-
-    //     Console.WriteLine("Waiting for dealer's hand...");
-
-    //     dealer.DealerDecision();
-    // }
