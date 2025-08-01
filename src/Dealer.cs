@@ -16,6 +16,7 @@ public class Dealer
         dealer.DrawCard(hand);
 
         Console.WriteLine($"Dealer starts with cards '{hand[0]}' and '{hand[1]}'");
+        Thread.Sleep(2000);
         Console.WriteLine();
 
         gameManager.AceHandler(hand);

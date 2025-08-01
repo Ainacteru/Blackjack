@@ -31,8 +31,8 @@ public class DialogManager
 
     public void HitOrStay()
     {
-    
-        Console.WriteLine("Do you 'hit', 'stay' or 'list' your cards?");
+
+        Console.WriteLine("Do you 'hit', 'stay', or 'list' your cards?");
 
         string? answer = Console.ReadLine();
         switch (answer)
@@ -75,7 +75,9 @@ public class DialogManager
 
         if (gameManager.CheckIfBust(player.GetHand()) == true)
         {
-            Console.WriteLine("BUST!");
+            Console.WriteLine("You busted!");
+
+            PlayAgain();
         }
         else
         {
@@ -123,6 +125,17 @@ public class DialogManager
         else
         {
             Console.WriteLine("You Win!");
+        }
+
+        PlayAgain();
+    }
+
+    private void PlayAgain() {
+        Console.WriteLine("Type enter to play again or 'exit' to quit");
+        
+        if (!(Console.ReadLine() == "exit"))
+        {
+            Start();
         }
     }
 }
