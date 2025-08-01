@@ -73,7 +73,7 @@ public class DialogManager
         Console.WriteLine($"You drew '{player.GetCardInHand(player.GetHand().Count - 1)}'");
 
 
-        if (gameManager.CheckIfBust(player.GetHand()) == true)
+        if (gameManager.CheckIfBust(player.GetHand()))
         {
             Console.WriteLine("You busted!");
 

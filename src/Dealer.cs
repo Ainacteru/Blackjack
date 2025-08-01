@@ -30,7 +30,7 @@ public class Dealer
             Thread.Sleep(1000);
         }
 
-        if (!(gameManager.CheckIfBust(hand) == true))
+        if (!gameManager.CheckIfBust(hand))
         {
             Console.WriteLine();
             Console.WriteLine("Dealer's final hand has: " + string.Join(", ", hand));

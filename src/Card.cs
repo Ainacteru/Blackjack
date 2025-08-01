@@ -11,7 +11,7 @@ public class Card
 
         if (Rank == "Ace")
         {
-            Value = 1;
+            Value = 11;
         }
         else if (Rank == "Jack" || Rank == "Queen" || Rank == "King")
         {

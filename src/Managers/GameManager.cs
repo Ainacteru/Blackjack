@@ -41,19 +41,15 @@ public class GameManager
             }
         }
     }
-    public bool? CheckIfBust(List<Card> hand)
+    public bool CheckIfBust(List<Card> hand)
     {
         if (GetSum(hand) > 21)
         {
             return true;
         }
-        else if (GetSum(hand) < 21)
-        {
-            return false;
-        }
         else
         {
-            return null;
+            return false;
         }
     }
 
