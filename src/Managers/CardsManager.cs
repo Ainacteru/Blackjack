@@ -1,45 +1,55 @@
 public class CardsManager
 {
-    private List<int> cards = new List<int>();
+    private static List<Card> deck = new List<Card>();
 
     public CardsManager()
     {
-        SetupCards(cards);
+        deck = GenerateDeck();
+        ShuffleDeck();
     }
 
-    public void SetupCards(List<int> cards)
+    public List<Card> GenerateDeck()
     {
-        for (int rank = 0; rank < 13; rank++)
+        string[] suits = { "Spades", "Hearts", "Clubs", "Diamonds" };
+        string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+
+        List<Card> newDeck = new List<Card>();
+
+        foreach (var suit in suits)
         {
-            for (int suit = 0; suit < 4; suit++)
+            foreach (var rank in ranks)
             {
-                if (rank >= 10) // black jack face cards are all 10s
-                {
-                    cards.Add(10);
-                }
-                else { 
-                    cards.Add(rank + 1);
-                }
+                newDeck.Add(new Card(rank, suit));
             }
         }
 
-        foreach (var card in cards)
-        {
-            Console.WriteLine(card);
-        }     
+        return newDeck;
     }
 
-    public List<int> GetCards()
+    public void ShuffleDeck()
     {
-        return cards;
+        Card[] deckArray = deck.ToArray();
+
+        Random.Shared.Shuffle(deckArray); // random.shared.shuffle only works for arrays so convert to array and back to list
+
+        deck = deckArray.ToList();
     }
 
-    public int GetRandomCard()
+
+    public Card DrawCard()
     {
-        var random = new Random();
-        int card = random.Next(cards.Count);
+        Card nextCard = deck[0];
+        deck.Remove(deck[0]);
 
-        return cards[card];
+        return nextCard;
+
     }
+
+    public List<Card> GetDeck()
+    {
+        return deck;
+    }
+
+
 
 }
