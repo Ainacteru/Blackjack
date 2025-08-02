@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "8oQ/h2cpTZA=",
+  "dgSpecHash": "w18AYyrFqnA=",
   "success": true,
   "projectFilePath": "/home/Gary/Projects/Coding/Dotnet/ConsoleApps/Blackjack/Blackjack.csproj",
   "expectedPackageFiles": [
-    "/home/Gary/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.7/microsoft.aspnetcore.app.ref.9.0.7.nupkg.sha512"
+    "/home/Gary/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/9.0.7/microsoft.netcore.app.runtime.linux-x64.9.0.7.nupkg.sha512",
+    "/home/Gary/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.7/microsoft.aspnetcore.app.ref.9.0.7.nupkg.sha512",
+    "/home/Gary/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/9.0.7/microsoft.aspnetcore.app.runtime.linux-x64.9.0.7.nupkg.sha512",
+    "/home/Gary/.nuget/packages/microsoft.netcore.app.host.linux-x64/9.0.7/microsoft.netcore.app.host.linux-x64.9.0.7.nupkg.sha512"
   ],
   "logs": []
 }
