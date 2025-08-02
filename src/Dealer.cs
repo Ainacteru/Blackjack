@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class Dealer
 {
     GameManager gameManager;
@@ -16,6 +18,7 @@ public class Dealer
         dealer.DrawCard(hand);
 
         Console.WriteLine($"Dealer starts with cards '{hand[0]}' and '{hand[1]}'");
+        Thread.Sleep(2000);
         Console.WriteLine();
 
         gameManager.AceHandler(hand);
@@ -29,7 +32,7 @@ public class Dealer
             Thread.Sleep(1000);
         }
 
-        if (!(gameManager.CheckIfBust(hand) == true))
+        if (!gameManager.CheckIfBust(hand))
         {
             Console.WriteLine();
             Console.WriteLine("Dealer's final hand has: " + string.Join(", ", hand));
@@ -49,6 +52,13 @@ public class Dealer
 
         //Console.WriteLine($" dealer sum is {handSum}");
         return handSum;
+    }
+
+    public void ResetHand()
+    {
+        //Console.WriteLine("Resetting dealer's hand, dealer's hand has", string.Join(", ", hand));
+        dealer.ResetHand(hand);
+        //Console.WriteLine("Reset dealer's hand, dealer's hand has", string.Join(", ", hand));
     }
         
 }

@@ -13,6 +13,11 @@ public class CardsManager
         string[] suits = { "Spades", "Hearts", "Clubs", "Diamonds" };
         string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
+        for (int i = 0; i < deck.Count; i++)
+        {
+            deck.Remove(deck[0]);
+        }
+
         List<Card> newDeck = new List<Card>();
 
         foreach (var suit in suits)

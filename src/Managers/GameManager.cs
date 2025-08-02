@@ -34,26 +34,33 @@ public class GameManager
         {
             foreach (Card card in hand)
             {
-                if (card.Value == 11)
+                if (GetSum(hand) > 21)
                 {
-                    card.Value = 1;
+                    if (card.Value == 11)
+                    {
+                        card.Value = 1;
+                    }
+                }
+                else
+                {
+                    if (card.Value == 1)
+                    {
+                        card.Value = 11;
+                    }
                 }
             }
         }
     }
-    public bool? CheckIfBust(List<Card> hand)
+
+    public bool CheckIfBust(List<Card> hand)
     {
         if (GetSum(hand) > 21)
         {
             return true;
         }
-        else if (GetSum(hand) < 21)
-        {
-            return false;
-        }
         else
         {
-            return null;
+            return false;
         }
     }
 
