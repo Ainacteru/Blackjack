@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class Dealer
 {
     GameManager gameManager;
@@ -50,6 +52,13 @@ public class Dealer
 
         //Console.WriteLine($" dealer sum is {handSum}");
         return handSum;
+    }
+
+    public void ResetHand()
+    {
+        //Console.WriteLine("Resetting dealer's hand, dealer's hand has", string.Join(", ", hand));
+        dealer.ResetHand(hand);
+        //Console.WriteLine("Reset dealer's hand, dealer's hand has", string.Join(", ", hand));
     }
         
 }

@@ -3,6 +3,7 @@ namespace Blackjack;
 public class DialogManager
 {
     CardsManager cardsManager = new CardsManager();
+    Dealer dealer;
     GameManager gameManager;
 
     Player player;
@@ -10,6 +11,7 @@ public class DialogManager
     public DialogManager()
     {
         gameManager = new GameManager(cardsManager);
+        dealer = new Dealer(gameManager);
         player = new Player(gameManager);
     }
 
@@ -76,6 +78,8 @@ public class DialogManager
         if (gameManager.CheckIfBust(player.GetHand()))
         {
             Console.WriteLine("You busted!");
+            Console.WriteLine("Your hand had: " + string.Join(", ", player.GetHand()));
+            Console.WriteLine($"lost with a sum of {gameManager.GetSum(player.GetHand())}");
 
             PlayAgain();
         }
@@ -100,7 +104,7 @@ public class DialogManager
 
     private void DealerTurn()
     {
-        Dealer dealer = new Dealer(gameManager);
+
 
         Console.WriteLine("Waiting for dealer's hand...");
 
@@ -132,6 +136,10 @@ public class DialogManager
 
     private void PlayAgain() {
         cardsManager.GenerateDeck();
+
+        player.ResetHand();
+        dealer.ResetHand();
+
         Console.WriteLine("Type enter to play again or 'exit' to quit");
         
         if (!(Console.ReadLine() == "exit"))
