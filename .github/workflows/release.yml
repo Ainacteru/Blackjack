@@ -3,7 +3,7 @@ name: Build & Upload Release Binaries
 on:
   push:
     tags:
-      - 'v*' # Trigger when you push a tag like v1.0
+      - 'v*' # Trigger when you push a tag like v1.0.1
 
 jobs:
   build:
